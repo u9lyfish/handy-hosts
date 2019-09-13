@@ -4,7 +4,6 @@
       <el-aside width="120px">
         <el-tabs
           v-model="activeTab"
-          @tab-click="onTabClick"
           tab-position="left"
         >
           <el-tab-pane
@@ -38,15 +37,14 @@
         return routes.filter(route => route.meta)
       }
     },
-    methods: {
-      onTabClick (name) {
-        this.$router.push(name)
-      }
-    },
     watch: {
+      activeTab (name) {
+        if (name !== this.$route.name) {
+          this.$router.push(name)
+        }
+      },
       '$route': {
         handler (route) {
-          console.log(route)
           this.activeTab = route.name
         },
         immediate: true
