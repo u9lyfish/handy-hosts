@@ -1,6 +1,5 @@
 .DS_Store
 .idea
-/webpack.config.js
 dist/electron/*
 dist/web/*
 build/*
